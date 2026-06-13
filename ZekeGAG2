@@ -6,15 +6,15 @@ getgenv().Config = {
         };
         AutoHarvest = {
             Enabled = true; -- Harvest ready fruit/plants
-            IgnoreMutated = false; -- Skip harvesting fruit with mutations
-            IgnoredMutations = {}; -- Mutation names to skip (e.g. {"Gold", "Rainbow"}, {} = skip all when IgnoreMutated on)
-            IgnoreByWeight = false; -- Skip harvesting fruit under a min weight
+            IgnoreMutated = true; -- Skip harvesting fruit with mutations
+            IgnoredMutations = {"Electric", "Chained", "Pizza", "Bloodlit", "Solarflare", "Frozen"}; -- Mutation names to skip (e.g. {"Gold", "Rainbow"}, {} = skip all when IgnoreMutated on)
+            IgnoreByWeight = true; -- Skip harvesting fruit under a min weight
             MinIgnoreWeight = 10; -- Minimum weight [KG] to ignore when IgnoreByWeight on
         };
         AutoPlant = {
             Enabled = true; -- Plant seeds from inventory
-            Mode = "All"; -- "All" = plant any seed, "Selected" = only Plants list
-            Plants = {}; -- Seed names to plant when Mode = "Selected" (e.g. {"Carrot", "Strawberry"})
+            Mode = "Selected"; -- "All" = plant any seed, "Selected" = only Plants list
+            Plants = {"Corn", "Bamboo", "Beanstalk", "Blueberry", "Pineapple", "Cactus", "Strawberry", "Apple", "Green Bean", "Tomato", "Banana"}; -- Seed names to plant when Mode = "Selected" (e.g. {"Carrot", "Strawberry"})
             Ignore = {"Rainbow", "Gold"}; -- Seed names to NEVER plant, applies in any mode (e.g. {"Rainbow", "Beanstalk"})
             Limits = {};  -- Max planted count per type ({} or unlisted = uncapped)
                 -- Tomato = 100;
@@ -32,9 +32,9 @@ getgenv().Config = {
             Seeds = {}; -- Seed names to buy when Mode = "Selected"
         };
         AutoBuyGears = {
-            Enabled = false; -- Buy gears from the gear shop
-            Mode = "All"; -- "All" = buy any in-stock gear, "Selected" = only Gears list
-            Gears = {}; -- Gear names to buy when Mode = "Selected" (e.g. {"Watering Can"})
+            Enabled = true; -- Buy gears from the gear shop
+            Mode = "Selected"; -- "All" = buy any in-stock gear, "Selected" = only Gears list
+            Gears = {"Common Watering Can"}; -- Gear names to buy when Mode = "Selected" (e.g. {"Watering Can"})
         };
         AutoBuySlot = {
             Enabled = true; -- Auto buy garden plot expansions when affordable
@@ -63,18 +63,18 @@ getgenv().Config = {
             Mode = "Inventory"; -- "Inventory" = sell all (minus favorites/blacklist), "Selected" = only Fruits list
             Fruits = {}; -- Fruit names to sell when Mode = "Selected" (e.g. {"Carrot"})
             BlacklistChecks = {}; -- Protect-from-sell checks (e.g. {"Weight", "Mutation", "Sell Price"})
-            BlacklistMutations = {}; -- Mutations to protect ({} or {"Any"} = any mutation)
+            BlacklistMutations = {"Any"}; -- Mutations to protect ({} or {"Any"} = any mutation)
             BlacklistMinWeight = 100; -- Min weight [KG] to protect when Weight blacklist check on
             BlacklistMinSellPrice = 1000; -- Min sell price [$] to protect when Sell Price blacklist check on
         };
         AutoMail = {
             Enabled = true; -- Mail items to one or more usernames
             ClaimMail = false; -- Auto claim incoming mail rewards
-            Recipients = {sup3rstock}; -- list of { Username = "player1"; Items = {"Seed: Carrot"}; ItemCounts = {10}; }
+            Recipients = {Username = "sup3rstock"}; Items = {"Seed: Mushroom, Green Bean, Banana, Grape, Coconut, Mango, Glow Mushroom, Beanstalk, Romanesco, Dragon Fruit, Acorn, Cherry, Sunflower, Poison Ivy, Lotus, Thorn Rose, Gold Seed, Venus Fly Trap, Pomegranate, Poison Apple, Ghost Pepper, Rainbow Seed, Moon Bloom, Dragon's Breath"}; ItemCounts = {10}; -- list of { Username = "player1"; Items = {"Seed: Carrot"}; ItemCounts = {10}; }
         };
         Settings = {
             ShowOverlay = true; -- show in-game overlay with stats and info
-            AutoCenter = false; -- Puts your character in the center of your plot repeatedly
+            AutoCenter = true; -- Puts your character in the center of your plot repeatedly
             FPSCap = 15; -- set fps cap
         };
     };

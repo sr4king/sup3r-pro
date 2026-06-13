@@ -16,11 +16,11 @@ getgenv().Config = {
             Mode = "All"; -- "All" = plant any seed, "Selected" = only Plants list
             Plants = {}; -- Seed names to plant when Mode = "Selected" (e.g. {"Carrot", "Strawberry"})
             Ignore = {"Rainbow", "Gold"}; -- Seed names to NEVER plant, applies in any mode (e.g. {"Rainbow", "Beanstalk"})
-            Limits = { -- Max planted count per type ({} or unlisted = uncapped)
+            Limits = {};  -- Max planted count per type ({} or unlisted = uncapped)
                 -- Tomato = 100;
                 -- Corn = 50;
                 -- Strawberry = 200;
-            };
+            
         };
         AutoUpgrade = {
             Enabled = true; -- When plot is full, shovel the least valuable plant and replace with the most valuable seed you can afford

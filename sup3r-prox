@@ -2,7 +2,7 @@ getgenv().Config = {
         Dashboard = {
             Enabled = true; -- Connect to the ZekeHub dashboard so you can see live stats and control this bot from the website
             SyncConfig = true; -- Let the dashboard change these settings live, without you re-running the script
-            GroupName = "sup3r-pro"; -- Folder name your bots show up under on the dashboard — bots sharing a name are grouped together (manage at https://zekehub.com/dashboard/gag2)
+            GroupName = "sup3r"; -- Folder name your bots show up under on the dashboard — bots sharing a name are grouped together (manage at https://zekehub.com/dashboard/gag2)
         };
         AutoGarden = {
             Enabled = false; -- Master switch for the whole auto garden system

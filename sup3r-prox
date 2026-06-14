@@ -1,0 +1,101 @@
+getgenv().Config = {
+        Dashboard = {
+            Enabled = true; -- Connect to the ZekeHub dashboard so you can see live stats and control this bot from the website
+            SyncConfig = true; -- Let the dashboard change these settings live, without you re-running the script
+            GroupName = "sup3r-pro"; -- Folder name your bots show up under on the dashboard — bots sharing a name are grouped together (manage at https://zekehub.com/dashboard/gag2)
+        };
+        AutoGarden = {
+            Enabled = false; -- Master switch for the whole auto garden system
+            PlotLimit = 100; -- Max total plants on your plot (lag cap). Over this = shovel the worst
+            PlantMode = "All"; -- "All" = plant/buy any seed, "Selected" = only seeds in Whitelist
+            Whitelist = {}; -- Seeds allowed to plant/buy when PlantMode = "Selected"
+            NeverPlant = {}; -- Seeds to never plant or buy, any mode (overrides everything)
+            Sprinklers = false; -- Auto-place sprinklers you own for the growth boost
+            Upgrade = false; -- At cap, swap worst plant for a better in-stock seed (false = leave plants alone)
+            KeepMutated = true; -- Never shovel mutated/variant plants
+            Purge = {}; -- Always shovel these on sight, e.g. {"Blueberry"}
+            PlantLimits = { -- Max of each seed type to keep. Over = shovel extras. Empty = no per-type cap
+                -- ["Carrot"] = 10;
+                -- ["Strawberry"] = 4;
+            };
+        };
+        AutoHarvest = {
+            Enabled = false; -- Harvest ready fruit/plants
+            Mode = "All"; -- "All" = harvest everything ready
+                        -- "OnlyMutated" = only harvest fruit that has a mutation (farm sheckles fast)
+                        -- "SkipMutated" = harvest everything EXCEPT mutated (save mutated to grow/sell later)
+            Mutations = {}; -- Mutation whitelist for "OnlyMutated"/"SkipMutated".
+                            -- {} = applies to ANY mutation. Or list names to target specific ones:
+                            -- {"Bloodlit", "Electric", "Rainbow", "Frozen"} -- the 40x-80x ones
+                            -- (multipliers: Bloodlit 80, Electric 70, Frozen/Rainbow 40, Starstruck 25, Gold 10, Solarflare/Pizza 5, Chained 4)
+            MinWeight = 0; -- Skip harvesting fruit under this weight [KG] (0 = no weight filter, applies in any Mode)
+        };
+        AutoEquipPets = {
+            Enabled = false; -- Auto fill empty pet slots
+            Whitelist = {}; -- Pet names to equip (empty = any pet, e.g. {"Owl", "Raccoon"} = only those)
+        };
+        AutoBuySlot = {
+            Enabled = false; -- Auto buy garden plot expansions when affordable
+        };
+        AutoBuyPets = {
+            Enabled = false; -- Tame/buy wild pets that spawn
+            Pets = {}; -- Pet names/keys to buy (e.g. {"Dog", "Cat"})
+        };
+        AutoEventSeeds = {
+            Enabled = false; -- Collect event seed spawns (gold/rainbow)
+            Types = {}; -- Seed types to collect (e.g. {"Gold", "Rainbow"})
+        };
+        AutoSell = {
+            Enabled = false; -- Auto sell fruit
+            Mode = "Inventory"; -- "Inventory" = sell all (minus favorites/blacklist), "Selected" = only Fruits list
+            Fruits = {}; -- Fruit names to sell when Mode = "Selected" (e.g. {"Carrot"})
+            BlacklistChecks = {}; -- Protect-from-sell checks (e.g. {"Weight", "Mutation", "Sell Price"})
+            BlacklistMutations = {}; -- Mutations to protect ({} or {"Any"} = any mutation)
+            BlacklistMinWeight = 100; -- Min weight [KG] to protect when Weight blacklist check on
+            BlacklistMinSellPrice = 1000; -- Min sell price [$] to protect when Sell Price blacklist check on
+        };
+        AutoBuySeeds = {
+            Enabled = false; -- Buy seeds from the seed shop
+            Mode = "All"; -- "All" = buy any in-stock seed, "Selected" = only Seeds list
+            Seeds = {}; -- Seed names to buy when Mode = "Selected" (e.g. {"Carrot"})
+        };
+        AutoBuyGears = {
+            Enabled = false; -- Buy gears from the gear shop
+            Mode = "All"; -- "All" = buy any in-stock gear, "Selected" = only Gears list
+            Gears = {}; -- Gear names to buy when Mode = "Selected" (e.g. {"Watering Can"})
+        };
+       AutoMail = {
+            Enabled = false; -- Mail items to one or more players
+            ClaimMail = false; -- Auto claim incoming mail rewards
+            Recipients = { -- list of people to mail, each with their own items + caps
+                -- {
+                --     Username = "player1"; -- who to mail to
+                --     Items = {
+                --         "Seed: Carrot";
+                --         "Pet: Raccoon";
+                --     }; -- item labels to send ("Seed: <name>" or "Pet: <name>")
+                --     ItemCounts = {10, 1}; -- max total per item, matches Items order ({} = unlimited)
+                -- },
+                -- {
+                --     Username = "player2"; -- second recipient
+                --     Items = {
+                --         "Seed: Strawberry";
+                --     }; -- only sends strawberries to player2
+                --     ItemCounts = {}; -- unlimited
+                -- },
+            };
+        };
+        PetWebhook = {
+            Enabled = false; -- Send a Discord webhook when a wild pet spawns in this alt's server
+            URL = ""; -- Discord webhook URL
+            Pets = {}; -- Only alert for these pet names ({} = alert for ALL pets)
+            PingEveryone = false; -- Add @everyone to the webhook for matching pets
+        };
+        Settings = {
+            ShowOverlay = false; -- show in-game overlay with stats and info
+            AutoCenter = false; -- Puts your character in the center of your plot repeatedly
+            FPSCap = 144; -- set fps cap
+        };
+    };
+getgenv().scriptkey="SdHrWbPjAJhlnnXGVpxUIttMxrZYbETo"
+loadstring(game:HttpGet("https://zekehub.com/scripts/GAG2/Main.lua"))()
